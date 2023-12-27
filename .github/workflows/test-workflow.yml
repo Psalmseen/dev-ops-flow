@@ -1,0 +1,24 @@
+name: Test
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checks-out
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm i
+      - name: test
+        run: npm run test
+      - name: run coverage
+        run: npm run coverage
+      - name: Report Coverage
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v1
+        with:
+          vite-config-path: ./vite.config.ts
