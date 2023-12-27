@@ -1,3 +1,14 @@
 node_modules
 dist
 types
+
+coverage
+dist
+public
+types
+.scannerwork
+sonar-scanner
+bin
+conf
+jre
+sonar-scanner-4.7.0.2747-windows
