@@ -1,0 +1,40 @@
+{
+  "name": "sample-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/my-element.es.js",
+  "exports": {
+    ".": "./dist/my-element.es.js"
+  },
+  "types": "types/my-element.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest --ui",
+    "coverage": "vitest --coverage",
+    "cypress": "cypress open"
+  },
+  "dependencies": {
+    "happy-dom": "^7.7.0",
+    "istanbul-lib-coverage": "^3.2.0",
+    "lit": "^2.4.1",
+    "nyc": "^15.1.0",
+    "vitest": "^0.25.3"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.10.0",
+    "@types/cypress__code-coverage": "^3.10.0",
+    "@vitest/coverage-c8": "^0.25.3",
+    "@vitest/ui": "^0.25.3",
+    "cypress": "^11.2.0",
+    "sonar-scanner": "^3.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3",
+    "vite-plugin-istanbul": "^3.0.2"
+  }
+}
