@@ -32,8 +32,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          start: npm run serve
-          wait-on: 'http://localhost:5173/' # this has been changed when the default runner on git hub changed to node 18
+          start: npm run cypress:serve
+          wait-on: 'http://ip6-localhost:5173/' # this has been changed when the default runner on git hub changed to node 18
           record: false
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
