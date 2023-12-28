@@ -42,6 +42,7 @@ jobs:
   sonarqube:
     # needs: cypress
     runs-on: ubuntu-latest
+    permissions: read-all
     steps:
       - name: checkout
         uses: actions/checkout@v3
