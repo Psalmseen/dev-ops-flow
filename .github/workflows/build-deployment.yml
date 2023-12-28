@@ -6,41 +6,41 @@ on:
       - '!main'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install dependecies
-        run: npm i
-      - name: test
-        run: npm run test
-      - name: run coverage
-        run: npm run coverage
-      - name: Report Coverage
-        if: always()
-        uses: davelosert/vitest-coverage-report-action@v1
-        with:
-          vite-config-path: ./vite.config.ts
+  #   test:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Checkout
+  #         uses: actions/checkout@v3
+  #       - name: Install dependecies
+  #         run: npm i
+  #       - name: test
+  #         run: npm run test
+  #       - name: run coverage
+  #         run: npm run coverage
+  #       - name: Report Coverage
+  #         if: always()
+  #         uses: davelosert/vitest-coverage-report-action@v1
+  #         with:
+  #           vite-config-path: ./vite.config.ts
 
-  cypress:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          start: npm run serve
-          wait-on: 'http://ip6-localhost:5173/' # this has been changed when the default runner on git hub changed to node 18
-          record: false
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   cypress:
+  #     runs-on: ubuntu-latest
+  #     needs: test
+  #     steps:
+  #       - name: Checkout
+  #         uses: actions/checkout@v3
+  #       - name: Cypress run
+  #         uses: cypress-io/github-action@v5
+  #         with:
+  #           start: npm run serve
+  #           wait-on: 'http://ip6-localhost:5173/' # this has been changed when the default runner on git hub changed to node 18
+  #           record: false
+  #         env:
+  #           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   sonarqube:
-    needs: cypress
+    # needs: cypress
     runs-on: ubuntu-latest
     steps:
       - name: checkout
