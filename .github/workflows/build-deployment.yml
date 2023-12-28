@@ -56,16 +56,22 @@ jobs:
         run: npm run coverage
       - name: pull sonarqube image
         run: docker pull sonarqube
-      - name: create a docker cntainer
-        run: docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
-      - name: check docker Ip
-        run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube
-      - name: sonarqube scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - uses: sonarsource/sonarqube-quality-gate-action@master
-        timeout-minutes: 5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v1
+        with:
+          sonar-host-url: 'http://localhost:9000'
+          sonar-login: ${{ secrets.SONAR_TOKEN }}
+          project-key: 'dev-ops'
+    #   - name: create a docker container
+    #     run: docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+    #   - name: check docker Ip
+    #     run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube
+    #   - name: sonarqube scan
+    #     uses: sonarsource/sonarqube-scan-action@master
+    #     env:
+    #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    #   - uses: sonarsource/sonarqube-quality-gate-action@master
+    #     timeout-minutes: 5
+    #     env:
+    #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
