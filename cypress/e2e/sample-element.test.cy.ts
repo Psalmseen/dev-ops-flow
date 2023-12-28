@@ -13,6 +13,7 @@ describe('The sample element', () => {
     cy.get('[data-testId=lastName]')
       .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('Adeniyi', { delay: 100 });
   });
@@ -34,6 +35,7 @@ describe('The sample element', () => {
     cy.get('[data-testId=lastName]')
       .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Paul', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -45,6 +47,7 @@ describe('The sample element', () => {
     cy.get('[data-testId=lastName]')
       .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}David', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -57,6 +60,7 @@ describe('The sample element', () => {
     cy.get('[data-testId=lastName]')
       .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Nathan', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -68,6 +72,7 @@ describe('The sample element', () => {
     cy.get('[data-testId=lastName]')
       .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Abdul', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -79,6 +84,7 @@ describe('The sample element', () => {
     cy.get('[data-testId=lastName]')
       .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Stephen', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
