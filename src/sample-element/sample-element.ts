@@ -46,9 +46,7 @@ export class SampleElement extends LitElement {
       'Turkey',
       'South Africa',
     ];
-    return countries[
-      Math.abs(crypto.getRandomValues(new Int8Array(1))[0] % 22)
-    ];
+    return countries[Math.floor(Math.random() * 22)];
   }
 
   deleteUser(id: number) {
@@ -60,21 +58,17 @@ export class SampleElement extends LitElement {
     if (!firstName || !lastName) return;
     const user = {
       name: `${firstName} ${lastName}`,
-      age: Math.abs(crypto.getRandomValues(new Int8Array(1))[0] % 25) + 16,
+      age: Math.floor(Math.random() * 25) + 16,
       mobile: this.generateMobileNumber(),
       country: this.generateCountry(),
-      gender: ['Male', 'Female'][
-        Math.abs(crypto.getRandomValues(new Int8Array(1))[0] % 2)
-      ],
+      gender: ['Male', 'Female'][Math.round(Math.random())],
     };
     this.detailList = [...this.detailList, user];
   }
   generateMobileNumber() {
     return Array(11)
       .fill('')
-      .map((_) =>
-        Math.abs(crypto.getRandomValues(new Int8Array(1))[0] % 10).toString()
-      )
+      .map((_) => Math.floor(Math.random() * 10).toString())
       .join('');
   }
   protected render(): unknown {
