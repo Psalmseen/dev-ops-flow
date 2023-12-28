@@ -57,8 +57,10 @@ jobs:
         run: docker pull sonarqube
       - name: create a docker cntainer
         run: docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+      - name: check docker Ip
+        run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube
       - name: sonarqube scan
-        uses: SonarSource/sonarqube-scan-action@master
+        uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
