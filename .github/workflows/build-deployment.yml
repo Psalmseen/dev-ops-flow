@@ -3,8 +3,7 @@ on:
   push:
     branches:
       - '**'
-env:
-  TAG_NAME: ${{steps.create_tag.outputs.tag_name}}
+
 jobs:
   #   test:
   #     runs-on: ubuntu-latest
