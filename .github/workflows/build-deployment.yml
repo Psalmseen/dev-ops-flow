@@ -60,17 +60,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #   - name: create a docker container
-  #     run: docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
-  #   - name: check docker Ip
-  #     run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sonarqube
-  #   - name: sonarqube scan
-  #     uses: sonarsource/sonarqube-scan-action@master
-  #     env:
-  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  #   - uses: sonarsource/sonarqube-quality-gate-action@master
-  #     timeout-minutes: 5
-  #     env:
-  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #  For the sake of Peace
