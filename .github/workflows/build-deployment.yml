@@ -78,5 +78,5 @@ jobs:
           git push --tags
       - uses: ncipollo/release-action@v1
         with:
-          tag: 'v$(date +"%Y%m%d%H%M%S")'
+          tag: v$(date +"%Y%m%d%H%M%S")
           token: ${{secrets.GITHUB_TOKEN}}
