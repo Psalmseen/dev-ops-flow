@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - '**'
-
+env:
+  TAG_NAME: ${{steps.create_tag.outputs.tag_name}}
 jobs:
   #   test:
   #     runs-on: ubuntu-latest
@@ -71,15 +72,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: create tag
+        id: create_tag
         run: |
           git config user.name 'GitHub Actions'
           git config user.email 'actions@github.com'
-          git tag -a "v$(date +'%Y%m%d%H%M%S')" -m "Release"
+          echo "TAG_NAME=v$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+          git tag -a "$TAG_NAME" -m "Release"
           git push --tags
           git pull origin
       - name: check the tag name
-        run: echo ${{github.ref.tag}}
+        run: echo $TAG_NAME
       - uses: ncipollo/release-action@v1
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          tag: ${{github.ref.tag}}
+          tag: $TAG_NAME
