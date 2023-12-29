@@ -74,7 +74,7 @@ jobs:
         run: |
           git config user.name 'GitHub Actions'
           git config user.email 'actions@github.com'
-          git tag -a "v$(date + '%Y%m%d%H%M%S')" -m "Release"
+          git tag -a "v$(date +'%Y%m%d%H%M%S')" -m "Release"
           git push --tags
       - uses: ncipollo/release-action@v1
         with:
