@@ -54,6 +54,7 @@ export class SampleElement extends LitElement {
   }
   generateUser() {
     const { firstName, lastName } = this.currentName;
+
     if (!firstName || !lastName) return;
     const user = {
       name: `${firstName} ${lastName}`,

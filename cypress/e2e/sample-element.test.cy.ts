@@ -11,8 +11,10 @@ describe('The sample element', () => {
   });
   it('inputs the last name', () => {
     cy.get('[data-testId=lastName]')
+      // .wait(200)
       .should('exist')
       .click()
+      .focus()
       .type('Adeniyi', { delay: 100 });
   });
   it('adds a user', () => {
@@ -31,7 +33,9 @@ describe('The sample element', () => {
       .should('exist')
       .type('{selectAll}Daniel', { delay: 100 });
     cy.get('[data-testId=lastName]')
+      // .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Paul', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -41,17 +45,22 @@ describe('The sample element', () => {
       .should('exist')
       .type('{selectAll}Nanisca', { delay: 100 });
     cy.get('[data-testId=lastName]')
+      // .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}David', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
     cy.get('[data-testId=delete-2]').should('exist');
 
     cy.get('[data-testId=firstName]')
+      // .wait(200)
       .should('exist')
       .type('{selectAll}Israel', { delay: 100 });
     cy.get('[data-testId=lastName]')
+      // .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Nathan', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -61,7 +70,9 @@ describe('The sample element', () => {
       .should('exist')
       .type('{selectAll}Jubril', { delay: 100 });
     cy.get('[data-testId=lastName]')
+      // .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Abdul', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();
@@ -71,7 +82,9 @@ describe('The sample element', () => {
       .should('exist')
       .type('{selectAll}James', { delay: 100 });
     cy.get('[data-testId=lastName]')
+      // .wait(200)
       .should('exist')
+      .click()
       .focus()
       .type('{selectAll}Stephen', { delay: 100 });
     cy.get('[data-testId=generate]').should('exist').click();

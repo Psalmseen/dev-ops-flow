@@ -17,6 +17,7 @@
     "build": "tsc && vite build",
     "test": "vitest --ui",
     "coverage": "vitest --coverage",
+    "serve": "npm run build && vite serve",
     "cypress": "cypress open"
   },
   "dependencies": {
