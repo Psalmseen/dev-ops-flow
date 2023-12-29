@@ -76,7 +76,7 @@ jobs:
           git config user.name 'GitHub Actions'
           git config user.email 'actions@github.com'
           echo "TAG_NAME=v$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-          git tag -a "$TAG_NAME" -m "Release"
+          git tag -a "v$(date +'%Y%m%d%H%M%S')" -m "Release"
           git push --tags
           git pull origin
       - name: check the tag name
