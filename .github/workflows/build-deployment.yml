@@ -110,7 +110,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/clockbox:${{env.TAG_NAME}}
+          tags: ${{ secrets.DOCKER_USERNAME }}/clockbox:latest
     #   - name: Build and push Docker image
     #     env:
     #       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
