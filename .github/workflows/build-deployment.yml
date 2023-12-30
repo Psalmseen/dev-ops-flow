@@ -93,21 +93,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: set tag
+        run: echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: set tag
-        run: echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
-      - name: Build and push Docker image
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          # Set your Docker image name and tag
-          IMAGE_NAME="psalmseen/sample"
-          TAG="${{ env.TAG_NAME }}"
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/clockbox:${{env.TAG_NAME}}
+    #   - name: Build and push Docker image
+    #     env:
+    #       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    #       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    #     run: |
+    #       # Set your Docker image name and tag
+    #       IMAGE_NAME="psalmseen/sample"
+    #       TAG="${{ env.TAG_NAME }}"
 
-          # Build and push Docker image
-          docker buildx create --use
-          docker buildx build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest --push .
+    #       # Build and push Docker image
+    #       docker buildx create --use
+    #       docker buildx build -t $IMAGE_NAME:$TAG -t $IMAGE_NAME:latest --push .
