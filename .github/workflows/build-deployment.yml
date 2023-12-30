@@ -94,7 +94,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: set tag
-        run: echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        run: |
+          git describe --tags --abbrev=0
+          echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -110,7 +112,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: .
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/clockbox:latest
     #   - name: Build and push Docker image
