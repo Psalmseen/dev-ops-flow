@@ -96,6 +96,8 @@ jobs:
       - name: set tag
         run: |
           git status
+          git fetch --tags
+          git tag -l
           git describe --tags --abbrev=0
           echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: Login to Docker Hub
