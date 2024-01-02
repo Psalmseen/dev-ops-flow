@@ -24,6 +24,7 @@ jobs:
 
   run-the-deployment-flow:
     runs-on: ubuntu-latest
+    needs: get-last-working-version
 
     steps:
       - name: Checkout respository
