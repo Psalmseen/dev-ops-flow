@@ -34,4 +34,6 @@ jobs:
           commit_message=$(git log --format=%s -n 1)
           version_tag=$(echo "$commit_message" | grep -o '\b[Aa][[:alnum:]]*' | head -n 1)
           echo "LATEST_STABLE_VERSION=$version_tag" >> $GITHUB_ENV
+      - name: Checks the variable
+        run: |
           echo ${{env.LATEST_STABLE_VERSION}}
