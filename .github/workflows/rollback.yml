@@ -32,7 +32,8 @@ jobs:
       - name: Gets the version Number
         run: |
           commit_message=$(git log --format=%s -n 1)
-          echo "LATEST_STABLE_VERSION=$(echo "$commit_message" | grep -o '\b[Aa][[:alnum:]]*' | head -n 1) >> $GITHUB_ENV
+          echo "LATEST_STABLE_VERSION=$(echo "$commit_message" | grep -o '\b[v][[:alnum:]]*' | head -n 1)" >> $GITHUB_ENV
+
       - name: Checks the variable
         run: |
           echo ${{env.LATEST_STABLE_VERSION}}
