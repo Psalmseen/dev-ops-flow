@@ -37,3 +37,4 @@ jobs:
       - name: Checks the variable
         run: |
           echo ${{env.LATEST_STABLE_VERSION}}
+          #
