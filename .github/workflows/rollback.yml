@@ -27,6 +27,8 @@ jobs:
 
     steps:
       - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Gets the version Number
         run: |
           commit_message=$(git log --format=%s -n 1)
           version_tag=$(echo "$commit_message" | grep -o '\b[Aa][[:alnum:]]*' | head -n 1)
