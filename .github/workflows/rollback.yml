@@ -15,11 +15,11 @@ jobs:
 
       - name: Check for the keyword in the commit message
         run: |
-          if [[ $(git log --format=%B -n 1 $GITHUB_SHA) == *"trigger-keyword"* ]]; then
+          if [[ $(git log --format=%B -n 1 $GITHUB_SHA) == *"rollback"* ]]; then
             echo "Keyword found in commit message. Proceeding with the workflow..."
           else
             echo "No keyword found in commit message. Skipping the workflow."
-            exit 0
+            exit 1
           fi
 
   run-the-deployment-flow:
