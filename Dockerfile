@@ -2,7 +2,11 @@ FROM ubuntu:latest
 
 WORKDIR /
 
-COPY / /
+COPY / /app
+
+RUN ls
+
+WORKDIR /app
 
 RUN ls
 
