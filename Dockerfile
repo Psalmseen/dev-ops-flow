@@ -1,5 +1,5 @@
 # Use the latest Ubuntu as a base image
-FROM ubuntu:latest
+FROM node:latest
 
 # Set the working directory in the container
 WORKDIR /
@@ -10,10 +10,7 @@ COPY . /app
 # Navigate to /app directory
 WORKDIR /app
 
-# Install Node.js and npm
-RUN apt-get update \
-    && apt-get install -y nodejs \
-    && apt-get install -y npm
+
 
 # Display the contents of the current directory
 RUN node -v \
