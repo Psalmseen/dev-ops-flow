@@ -4,6 +4,8 @@ WORKDIR /src
 
 COPY / /
 
+RUN ls
+
 RUN npm run dev
 
 

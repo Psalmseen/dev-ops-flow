@@ -3,7 +3,7 @@ name: Roll back
 on:
   push:
     branches:
-      - '**'
+      - 'sample'
 
 jobs:
   get-last-working-version:
