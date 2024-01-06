@@ -16,7 +16,8 @@ RUN apt-get update \
     && apt-get install -y npm
 
 # Display the contents of the current directory
-RUN ls
+RUN node -v \
+    && npm -v
 
 # Install project dependencies (assuming you have a package.json file)
 RUN npm install
