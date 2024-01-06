@@ -25,7 +25,7 @@ RUN npm install
 RUN ls
 
 # Define the command to run your application (assuming you have an npm script named "dev")
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "serve"]
 
 # RUN apt-get update && apt-get install -y wget unzip
 
