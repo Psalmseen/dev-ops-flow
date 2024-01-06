@@ -5,6 +5,10 @@ import { sampleEleentStyles } from './sample-element.styles';
 @customElement('sample-element')
 export class SampleElement extends LitElement {
   static styles: CSSResultGroup = sampleEleentStyles;
+  /**
+   *
+   *   This  defines the list of details provided
+   */
   @state() detailList = [
     {
       name: 'Samson Oyebamiji',
@@ -14,13 +18,25 @@ export class SampleElement extends LitElement {
       gender: 'Male',
     },
   ];
+  /**
+   * This holds the name typed in the input field
+   */
   @state() currentName = {
     firstName: '',
     lastName: '',
   };
+  /**
+   *
+   * @param customEvent this provides the value of the input field
+   * @param name string this is the key od the current me to be edited
+   */
   handleNameInput({ target: { value } }: any, name: string) {
     this.currentName = { ...this.currentName, [name]: value };
   }
+  /**
+   *
+   * @returns  a random country for the new user
+   */
   generateCountry() {
     const countries = [
       'Portugal',
@@ -48,10 +64,17 @@ export class SampleElement extends LitElement {
     ];
     return countries[Math.floor(Math.random() * 22)];
   }
-
+  /**
+   * This is a function that deletes a user from the list of users
+   * @param id  the id of the user to delete
+   */
   deleteUser(id: number) {
     this.detailList = this.detailList.filter((_, i) => id !== i);
   }
+  /**
+   *  this function generates the user
+   * @returns
+   */
   generateUser() {
     const { firstName, lastName } = this.currentName;
 
@@ -65,6 +88,10 @@ export class SampleElement extends LitElement {
     };
     this.detailList = [...this.detailList, user];
   }
+  /**
+   *  Generates a mobile number for the new user
+   * @returns void
+   */
   generateMobileNumber() {
     return Array(11)
       .fill('')

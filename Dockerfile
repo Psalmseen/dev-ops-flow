@@ -2,7 +2,9 @@ FROM ubuntu:latest
 
 WORKDIR /src
 
-COPY / /src
+COPY / /
+
+RUN npm run dev
 
 
 
