@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-WORKDIR /src
+WORKDIR /
 
 COPY / /
 
