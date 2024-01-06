@@ -1,19 +1,31 @@
+# Use the latest Ubuntu as a base image
 FROM ubuntu:latest
 
+# Set the working directory in the container
 WORKDIR /
 
-COPY / /app
+# Copy the entire contents of the current directory to /app in the container
+COPY . /app
 
-RUN ls
-
+# Navigate to /app directory
 WORKDIR /app
 
+# Install Node.js and npm
+RUN apt-get update \
+    && apt-get install -y nodejs \
+    && apt-get install -y npm
+
+# Display the contents of the current directory
 RUN ls
 
-RUN npm run dev
+# Install project dependencies (assuming you have a package.json file)
+RUN npm install
 
+# Display the contents of the /app directory
+RUN ls
 
-
+# Define the command to run your application (assuming you have an npm script named "dev")
+CMD ["npm", "run", "dev"]
 
 # RUN apt-get update && apt-get install -y wget unzip
 
