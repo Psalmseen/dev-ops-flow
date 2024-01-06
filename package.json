@@ -17,7 +17,7 @@
     "build": "tsc && vite build",
     "test": "vitest --ui",
     "coverage": "vitest --coverage",
-    "serve": "npm run build && vite serve",
+    "serve": "npm run build && vite serve --host",
     "cypress": "cypress open",
     "generate-docs": "typedoc ./src/sample-element/sample-element.ts"
   },
