@@ -49,6 +49,7 @@ export class SampleElement extends LitElement {
       'United Kingdom',
       'Italy',
       'New Zealand',
+      'Nigeria',
       'Spain',
       'Netherlands',
       'Nigeria',
