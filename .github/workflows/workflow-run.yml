@@ -1,3 +1,4 @@
+name: Workflow Triggered
 on:
   workflow_run:
     workflows: [Deployment]
